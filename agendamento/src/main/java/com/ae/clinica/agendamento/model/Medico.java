@@ -9,9 +9,9 @@ import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity()
-@Table(name = "paciente")
-public class Paciente implements Serializable{
+@Entity
+@Table(name = "medico")
+public class Medico implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,13 +26,19 @@ public class Paciente implements Serializable{
     @Column(name = "numero_celular", nullable = false)
     private String numeroCelular;
     
-    @Column(name = "endereco", nullable = false)
-    private String endereco;
-    
     @Column(name = "email", nullable = false)
     private String email;
+    
+    @Column(name = "id_especialidade", nullable = false)
+    private Especialidade especialidade;
+    
+    @Column(name = "carga_horaria", nullable = false)
+    private Integer cargaHoraria;
+    
+    @Column(name = "registro", nullable = false)
+    private String registro;
 
-    public Paciente() {
+    public Medico() {
     }
 
     public Long getId() {
@@ -67,14 +73,6 @@ public class Paciente implements Serializable{
         this.numeroCelular = numeroCelular;
     }
 
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -83,10 +81,34 @@ public class Paciente implements Serializable{
         this.email = email;
     }
 
+    public Especialidade getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(Especialidade especialidade) {
+        this.especialidade = especialidade;
+    }
+
+    public Integer getCargaHoraria() {
+        return cargaHoraria;
+    }
+
+    public void setCargaHoraria(Integer cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
+    }
+
+    public String getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(String registro) {
+        this.registro = registro;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 71 * hash + Objects.hashCode(this.id);
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -101,13 +123,13 @@ public class Paciente implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Paciente other = (Paciente) obj;
+        final Medico other = (Medico) obj;
         return Objects.equals(this.id, other.id);
     }
 
     @Override
     public String toString() {
-        return "Paciente{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", numeroCelular=" + numeroCelular + ", endereco=" + endereco + ", email=" + email + '}';
+        return "Medico{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", numeroCelular=" + numeroCelular + ", email=" + email + ", especialidade=" + especialidade + ", cargaHoraria=" + cargaHoraria + ", registro=" + registro + '}';
     }
     
 }

@@ -12,7 +12,7 @@ public class PacienteService {
         paciente.setNome("Augusto Albuquerque");
         paciente.setCpf("111.111.111-11");
         paciente.setEmail("augusto.albuquerque@gmail.com");
-        paciente.setTelefone("(27) 99999-9999");
+        paciente.setNumeroCelular("(27) 99999-9999");
         paciente.setEndereco("Avenida Jerferson Aguiar, Centro, Cariacica");
         return paciente;
     }
