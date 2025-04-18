@@ -28,7 +28,7 @@ public class MedicoService {
         Medico medico = medicoRepository.findById(m.getId()).orElseThrow();
         
         if(medico != null && medico.getId() != null){
-            medico = medicoRepository.save(medico);
+            medico = medicoRepository.save(m);
         }
         
         return medico;

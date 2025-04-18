@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -17,10 +19,12 @@ public class Agendamento implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name = "id_medico", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_medico", nullable = false)
     private Medico medico;
     
-    @Column(name = "id_paciente", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_paciente", nullable = false)
     private Paciente paciente;
     
     @Column(name = "data_agendamento", nullable = false)

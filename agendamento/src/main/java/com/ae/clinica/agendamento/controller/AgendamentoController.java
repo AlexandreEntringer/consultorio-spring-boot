@@ -1,7 +1,7 @@
 package com.ae.clinica.agendamento.controller;
 
-import com.ae.clinica.agendamento.model.Medico;
-import com.ae.clinica.agendamento.service.MedicoService;
+import com.ae.clinica.agendamento.model.Agendamento;
+import com.ae.clinica.agendamento.service.AgendamentoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,39 +16,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/medico")
-public class MedicoController {
-
+@RequestMapping("/agendamento")
+public class AgendamentoController {
+    
     @Autowired
-    private MedicoService medicoService;
-
+    private AgendamentoService agendamentoService;
+    
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Medico> findAll() {
-        return medicoService.findAll();
+    public List<Agendamento> findAll(){
+        return agendamentoService.findAll();
     }
-
+    
     @GetMapping(value = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Medico findById(@PathVariable("id") Long id) {
-        return medicoService.findById(id);
+    public Agendamento findById(@PathVariable("id") Long id){
+        return agendamentoService.findById(id);
     }
-
+    
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Medico postMedico(@RequestBody Medico medico) {
-        return medicoService.postMedico(medico);
+    public Agendamento postAgendamento(@RequestBody Agendamento a){
+        return agendamentoService.postAgendamento(a);
     }
-
+    
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Medico putMedico(@RequestBody Medico medico) {
-        return medicoService.putMedico(medico);
+    public Agendamento putAgendamento(@RequestBody Agendamento a){
+        return agendamentoService.putAgendamento(a);
     }
-
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<?> deleteMedico(@PathVariable("id") Long id){
-        medicoService.deleteMedico(id);
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteAgendamento(@PathVariable("id") Long id){
+        agendamentoService.deleteAgendamento(id);
         return ResponseEntity.noContent().build();
     }
-
 }
