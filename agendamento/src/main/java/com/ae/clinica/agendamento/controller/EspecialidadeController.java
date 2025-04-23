@@ -1,5 +1,6 @@
 package com.ae.clinica.agendamento.controller;
 
+import com.ae.clinica.agendamento.dto.data.EspecialidadeDTO;
 import com.ae.clinica.agendamento.model.Especialidade;
 import com.ae.clinica.agendamento.service.EspecialidadeService;
 import java.util.List;
@@ -23,25 +24,25 @@ public class EspecialidadeController {
     private EspecialidadeService especialidadeService;
     
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Especialidade> findAll(){
+    public List<EspecialidadeDTO> findAll(){
         return especialidadeService.findAll();
     }
     
     @GetMapping(value = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Especialidade findById(@PathVariable("id") Long id){
+    public EspecialidadeDTO findById(@PathVariable("id") Long id){
         return especialidadeService.findById(id);
     }
     
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Especialidade postEspecialidade(@RequestBody Especialidade e){
+    public EspecialidadeDTO postEspecialidade(@RequestBody EspecialidadeDTO e){
         return especialidadeService.postEspecialidade(e);
     }
     
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Especialidade putEspecialidade(@RequestBody Especialidade e){
+    public EspecialidadeDTO putEspecialidade(@RequestBody EspecialidadeDTO e){
         return especialidadeService.putEspecialidade(e);
     }
     

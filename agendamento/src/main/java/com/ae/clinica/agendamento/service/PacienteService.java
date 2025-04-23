@@ -1,5 +1,8 @@
 package com.ae.clinica.agendamento.service;
 
+import static com.ae.clinica.agendamento.dto.ObjectMapper.parseListObjects;
+import static com.ae.clinica.agendamento.dto.ObjectMapper.parseObject;
+import com.ae.clinica.agendamento.dto.data.PacienteDTO;
 import com.ae.clinica.agendamento.model.Paciente;
 import com.ae.clinica.agendamento.repository.PacienteRepository;
 import java.util.List;
@@ -12,26 +15,27 @@ public class PacienteService {
     @Autowired
     PacienteRepository pacienteRepository;
     
-    public Paciente findById(Long id){
-        return pacienteRepository.findById(id).orElseThrow();
+    public PacienteDTO findById(Long id){
+        return parseObject(pacienteRepository.findById(id).orElseThrow(), PacienteDTO.class);
     }
     
-    public List<Paciente> findAll(){
-        return pacienteRepository.findAll();
+    public List<PacienteDTO> findAll(){
+        return parseListObjects(pacienteRepository.findAll(), PacienteDTO.class);
     }
     
-    public Paciente postPaciente(Paciente p){
-        return pacienteRepository.save(p);
+    public PacienteDTO postPaciente(PacienteDTO p){
+        Paciente paciente = pacienteRepository.save(parseObject(p, Paciente.class));
+        return parseObject(paciente, PacienteDTO.class);
     }
     
-    public Paciente putPaciente(Paciente p){
+    public PacienteDTO putPaciente(PacienteDTO p){
         Paciente paciente = pacienteRepository.findById(p.getId()).orElseThrow();
         
         if(paciente != null && paciente.getId() != null){
-            paciente = pacienteRepository.save(p);
+            paciente = pacienteRepository.save(parseObject(p, Paciente.class));
         }
         
-        return paciente;
+        return parseObject(paciente, PacienteDTO.class);
     }
     
     public void deletePaciente(Long id){

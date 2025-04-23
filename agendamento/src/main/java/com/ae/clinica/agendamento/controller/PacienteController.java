@@ -1,5 +1,6 @@
 package com.ae.clinica.agendamento.controller;
 
+import com.ae.clinica.agendamento.dto.data.PacienteDTO;
 import com.ae.clinica.agendamento.model.Paciente;
 import com.ae.clinica.agendamento.service.PacienteService;
 import java.util.List;
@@ -23,25 +24,25 @@ public class PacienteController {
     private PacienteService pacienteService;
     
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Paciente> findAll(){
+    public List<PacienteDTO> findAll(){
         return pacienteService.findAll();
     }
     
     @GetMapping(value = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Paciente getPacientePorId(@PathVariable("id") Long id){
+    public PacienteDTO getPacientePorId(@PathVariable("id") Long id){
         return pacienteService.findById(id);
     }
     
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Paciente postPaciente(@RequestBody Paciente p){
+    public PacienteDTO postPaciente(@RequestBody PacienteDTO p){
         return pacienteService.postPaciente(p);
     }
     
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Paciente putPaciente(@RequestBody Paciente p){
+    public PacienteDTO putPaciente(@RequestBody PacienteDTO p){
         return pacienteService.putPaciente(p);
     }
     

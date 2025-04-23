@@ -1,5 +1,8 @@
 package com.ae.clinica.agendamento.service;
 
+import static com.ae.clinica.agendamento.dto.ObjectMapper.parseObject;
+import static com.ae.clinica.agendamento.dto.ObjectMapper.parseListObjects;
+import com.ae.clinica.agendamento.dto.data.AgendamentoDTO;
 import com.ae.clinica.agendamento.model.Agendamento;
 import com.ae.clinica.agendamento.repository.AgendamentoRepository;
 import java.util.List;
@@ -12,26 +15,27 @@ public class AgendamentoService {
     @Autowired 
     private AgendamentoRepository agendamentoRepository;
     
-    public List<Agendamento> findAll(){
-        return agendamentoRepository.findAll();
+    public List<AgendamentoDTO> findAll(){
+        return parseListObjects(agendamentoRepository.findAll(), AgendamentoDTO.class);
     }
     
-    public Agendamento findById(Long id){
-        return agendamentoRepository.findById(id).orElseThrow();
+    public AgendamentoDTO findById(Long id){
+        return parseObject(agendamentoRepository.findById(id).orElseThrow(), AgendamentoDTO.class);
     }
     
-    public Agendamento postAgendamento(Agendamento a){
-        return agendamentoRepository.save(a);
+    public AgendamentoDTO postAgendamento(AgendamentoDTO a){
+        Agendamento agendamento = agendamentoRepository.save(parseObject(a, Agendamento.class));
+        return parseObject(agendamento, AgendamentoDTO.class);
     }
     
-    public Agendamento putAgendamento(Agendamento a){
+    public AgendamentoDTO putAgendamento(AgendamentoDTO a){
         Agendamento agendamento = agendamentoRepository.findById(a.getId()).orElseThrow();
         
         if(agendamento != null && agendamento.getId() != null){
-            agendamento = agendamentoRepository.save(a);
+            agendamento = agendamentoRepository.save(parseObject(a, Agendamento.class));
         }
         
-        return agendamento;
+        return parseObject(agendamento, AgendamentoDTO.class);
     }
     
     public void deleteAgendamento(Long id){

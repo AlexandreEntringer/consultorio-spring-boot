@@ -1,6 +1,6 @@
 package com.ae.clinica.agendamento.controller;
 
-import com.ae.clinica.agendamento.model.Agendamento;
+import com.ae.clinica.agendamento.dto.data.AgendamentoDTO;
 import com.ae.clinica.agendamento.service.AgendamentoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,25 +23,25 @@ public class AgendamentoController {
     private AgendamentoService agendamentoService;
     
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Agendamento> findAll(){
+    public List<AgendamentoDTO> findAll(){
         return agendamentoService.findAll();
     }
     
     @GetMapping(value = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Agendamento findById(@PathVariable("id") Long id){
+    public AgendamentoDTO findById(@PathVariable("id") Long id){
         return agendamentoService.findById(id);
     }
     
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Agendamento postAgendamento(@RequestBody Agendamento a){
+    public AgendamentoDTO postAgendamento(@RequestBody AgendamentoDTO a){
         return agendamentoService.postAgendamento(a);
     }
     
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Agendamento putAgendamento(@RequestBody Agendamento a){
+    public AgendamentoDTO putAgendamento(@RequestBody AgendamentoDTO a){
         return agendamentoService.putAgendamento(a);
     }
     
