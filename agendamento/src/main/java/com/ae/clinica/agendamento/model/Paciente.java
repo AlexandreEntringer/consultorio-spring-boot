@@ -13,6 +13,8 @@ import java.util.Objects;
 @Table(name = "paciente")
 public class Paciente implements Serializable{
     
+    private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
