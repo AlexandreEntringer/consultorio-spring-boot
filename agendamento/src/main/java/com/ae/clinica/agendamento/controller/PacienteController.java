@@ -1,7 +1,6 @@
 package com.ae.clinica.agendamento.controller;
 
 import com.ae.clinica.agendamento.dto.data.PacienteDTO;
-import com.ae.clinica.agendamento.model.Paciente;
 import com.ae.clinica.agendamento.service.PacienteService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/paciente")
+@RequestMapping("/api/v1/paciente")
 public class PacienteController {
     
     @Autowired

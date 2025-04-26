@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/medico")
+@RequestMapping("/api/v1/medico")
 public class MedicoController {
 
     @Autowired

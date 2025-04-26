@@ -1,7 +1,6 @@
 package com.ae.clinica.agendamento.controller;
 
 import com.ae.clinica.agendamento.dto.data.EspecialidadeDTO;
-import com.ae.clinica.agendamento.model.Especialidade;
 import com.ae.clinica.agendamento.service.EspecialidadeService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/especialidade")
+@RequestMapping("/api/v1/especialidade")
 public class EspecialidadeController {
     
     @Autowired
