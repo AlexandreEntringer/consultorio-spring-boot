@@ -2,6 +2,7 @@ package com.ae.clinica.agendamento.dto.data;
 
 import com.ae.clinica.agendamento.model.Medico;
 import com.ae.clinica.agendamento.model.Paciente;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -13,6 +14,7 @@ public class AgendamentoDTO implements Serializable{
     private Long id;
     private Medico medico;
     private Paciente paciente;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private Timestamp dataAgendamento;
 
     public AgendamentoDTO() {
